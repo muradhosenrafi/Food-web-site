@@ -1,11 +1,20 @@
 import React from 'react'
 import Home from './pages/Home'
+import { Route,Routes } from 'react-router-dom'
+import Contact from './pages/Contact'
+import About from './pages/About'
+import Menu from './pages/Menu'
+import Cart from './pages/Cart'
 
 const App = () => {
   return (
-    <div>
-   <Home/>
-    </div>
+<Routes>
+  <Route path='/' element={<Home/>}/>
+  <Route path='contact' element={<Contact/>}/>
+  <Route path='about' element={<About/>}/>
+  <Route path='menu' element={<Menu/>}/>
+  <Route path='cart' element={<Cart/>}/>
+</Routes>
   )
 }
 
