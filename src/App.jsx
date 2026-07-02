@@ -5,6 +5,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Menu from './pages/Menu'
 import Cart from './pages/Cart'
+import Login from './components/Login'
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
   <Route path='about' element={<About/>}/>
   <Route path='menu' element={<Menu/>}/>
   <Route path='cart' element={<Cart/>}/>
+
+  <Route path='/login' element={<Home/>}/>
+
 </Routes>
   )
 }

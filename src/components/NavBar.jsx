@@ -1,18 +1,84 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FiBook,
   FiHome,
+  FiKey,
+  FiLogOut,
   FiPhone,
   FiShoppingCart,
   FiStar,
 } from "react-icons/fi";
 import { GiChefToque, GiForkKnifeSpoon } from "react-icons/gi";
-import { Link, NavLink } from "react-router-dom";
+import {  Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../components/CartContext";
+import Login from "./Login";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { totalItems } = useCart();
+  const  [showLoginModal,setShowLoginModal]=useState(false)
+  const navigate = useNavigate();
+  const location=useLocation();
+
+
+// combine updating login modal and auth status on location change
+const [isAuthenticated,setIsAuthenticated]= useState(
+  Boolean(localStorage.getItem('loginData'))
+)
+useEffect(()=>{
+setShowLoginModal(location.pathname === "/login");
+  setIsAuthenticated(Boolean(localStorage.getItem('loginData')))
+},[location.pathname])
+
+const handleLoginSuccess=()=>{
+  localStorage.setItem('loginData',JSON.stringify({loggedIn: true}));
+  setIsAuthenticated(true);
+  navigate('/');
+}
+
+const handleLogout =()=>{
+  localStorage.removeItem('loginData');
+   setIsAuthenticated(false)
+}
+
+// extract desktop auth button
+
+const renderDesktopAuthButton =() =>{
+  return isAuthenticated ? (
+      <button
+      onClick={handleLogout}
+      className="px-3 md:px-3 lg:px-6 py-1.5 md:py-2 lg:py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-2xl font-bold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center gap-2 shadow-md shadow-amber-900/20 text-xs md:text-sm lg:text-sm"
+    >
+      <FiLogOut className="text-base md:text-lg lg:text-lg" />
+      <span className="text-shadow">Logout</span>
+    </button>
+  ):(
+    <button onClick={()=> navigate('/login')} className="px-3 md:px-3 lg:px-6 py-1.5 md:py-2 lg:py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-2xl font-bold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center gap-2 shadow-md shadow-amber-900/20 text-xs md:text-sm lg:text-sm">
+  <FiKey className="text-base md:text-lg lg:text-lg" />
+      <span className="text-shadow">Login</span>
+    </button>
+  )
+}
+  // Extract mobile auth btn 
+  const renderMobileAuthBtn = () =>{
+    return isAuthenticated ? 
+    (
+      <button onClick={handleLogout} 
+      className="w-full px-4 py-3 bg-gradient-to-bt from-amber-500 to-amber-700 text-[#2D1b0E] rounded-xl font-semibold flex items-center justify-center space-x-2 text-sm">
+          <FiLogOut/>
+          <span>Logout</span>
+      </button>
+    ) :(
+       <button onClick={()=>{
+        navigate('/login')
+        setIsOpen(false)
+       }} 
+       className="w-full px-4 py-3 bg-gradient-to-bt from-amber-500 to-amber-700 text-[#2D1b0E] rounded-xl font-semibold flex items-center justify-center space-x-2 text-sm">
+          <FiKey/>
+          <span>Login</span>
+      </button>
+    )
+  }
 
   const navLinks = [
     { name: "Home", to: "/", icon: <FiHome /> },
@@ -91,6 +157,7 @@ const NavBar = () => {
                   </span>
                 )}
               </NavLink>
+              {renderDesktopAuthButton()}
             </div>
           </div>
           {/* mobil menu */}
@@ -148,12 +215,34 @@ const NavBar = () => {
                   </span>
                 )}
                  </NavLink>
+                 {renderDesktopAuthButton()}
             </div>
          </div>
         </div>
       )}
       {/* login model */}
+      {showLoginModal && (
+  <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-4">
+    <div className="relative w-full max-w-[480px] rounded-xl border-4 border-amber-700/30 bg-gradient-to-br from-[#2D1B0E] to-[#4a372a] p-6 shadow-[0_0_30px] shadow-amber-500/30">
       
+      <button
+        onClick={() => navigate("/")}
+        className="absolute right-2 top-2 text-2xl text-amber-500 hover:text-amber-300"
+      >
+        &times;
+      </button>
+
+      <h2 className="mb-4 text-center text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+        Foodie-Frenzy
+      </h2>
+
+      <Login
+        onLoginSuccess={handleLoginSuccess}
+        onClose={() => navigate("/")}
+      />
+    </div>
+  </div>
+)}
     </nav>
   );
 };
