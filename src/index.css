@@ -2,7 +2,9 @@
 @theme inline {
   --font-monsieur: "Monsieur La Doulaise", cursive;
   --font-playfair:  "Playfair", serif;
-
+  --font-poping:"Poppins", sans-serif;
+  --font-diploy:"Playfair Display", serif;
+  --font-cngel:"Cinzel", serif;
 }
 
 .orbit{
