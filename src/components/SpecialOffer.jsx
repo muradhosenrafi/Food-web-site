@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cardData, additionalData, addButtonBase, addButtonHover, commonTransition } from "../assets/dummydata";
 import { useCart } from "./CartContext";
-import { FaHeart, FaPlus, FaStar } from "react-icons/fa";
+import { FaFire, FaHeart, FaPlus, FaStar } from "react-icons/fa";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import FloatingParticale from "./FloatingParticale";
 
@@ -98,8 +98,12 @@ const SpecialOffer = () => {
           )}
         </div>
         <div className="mt-12 flex justify-center">
-                <button>
-                  
+                <button onClick={() => setShowAll(!showAll)}
+                  className="flex items-center gap-3 bg-gradient-to-r from-red-700 text-white px-8 py-3 rounded-2xl font-bold text-lg uppercase tracking-wider hover:gap-4 hover:scale-105 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 group border-2 border-amber-400/30 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r fill-amber-500/20 via-transparent to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>
+                    <FaFire className="text-xl animate-pulse"/>
+                    <span>{showAll ? 'Show Less' : ' Show More'}</span>
+                    <div className="h-full w-1 bg-amber-400/30 absolute right-0 top-0 group-hover:animate-border-pulse"/>
                 </button>
         </div>
       </div>
@@ -107,4 +111,4 @@ const SpecialOffer = () => {
   );
 };
 
-export default SpecialOffer;
+export default SpecialOffer
