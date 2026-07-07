@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaInfoCircle } from "react-icons/fa";
 import AboutImage from "../assets/AboutImage.png";
 import FloatingParticale from "./FloatingParticale";
+import './AboutHome.css'
 
 const AboutHome = () => {
   return (
