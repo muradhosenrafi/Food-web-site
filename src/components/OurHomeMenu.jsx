@@ -90,8 +90,9 @@ const OurHomeMenu = () => {
         </div>
         <div className="flex justify-center mt-16">
              <Link className="bg-amber-900/30 border-amber-800/30 text-amber-100 px-8 sm:px-10 py-3 rounded-full font-cinzel uppercase tracking-widest transition-all duration-300 hover:bg-amber-800/40 hover:text-amber-5 hover:scale-105 hover:shadow-lg hover:shadow-amber-900/20 backdrop-blur-sm " to='/menu'>
-                  Explore Full Menu 
+                  Explore Full Menu asdf
              </Link>
+
         </div>
       </div>
     </div>
