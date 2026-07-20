@@ -7,7 +7,7 @@ const Banner = () => {
   const [showVideo, setShowVideo] = useState(false);
   const { bannerImage, orbitImages, video } = bannerAssets;
 
-  const handleSeacch = () => {
+  const handleSeacch = (e) => {
     e.preventDefault();
     console.log("seching form ", searchQueary);
   };

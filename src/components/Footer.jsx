@@ -1,8 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaRegEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
+
+  const [email,setEmail] =useState ('');
+  const handleSubmit = (e)=> {
+   e.preventDefault();
+   alert ( `Thanks for subscribing! We'll send updates to ${email}`) ;
+   setEmail('');
+  }
+
   return (
-    <div>Footer</div>
+    <footer className='bg-[#2A211C] text-amber-100 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden '>
+      <div className='max-w-7xl mx-auto relative z-10'>
+         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12'>
+        {/* left colum */}
+        <div className='space-y-6'>
+
+        <h2 className='text-4xl sm:text-5xl md:text-5xl font-bold font-dim  text-amber-400 animate-pulse'>
+           Foodie-Frenzy
+        </h2>
+        <p className='text-amber-200/90 text-sm font-dim italic'>
+         When culinary artistry meets doorstep convenience . <br />
+         Savor handcrafted perfection delivered with care .
+        </p>
+        <form onSubmit={handleSubmit} className='relative mt-4 group '>
+          <div className='flex items-center gap-2 mb-2'>
+            <FaRegEnvelope className='text-amber-400 animate-pulse'/>
+              <span className='font-bold text-amber-400'>Get Exclusive Offers</span>
+          </div>
+          
+          <div className='relative'>
+            <input type="email" placeholder='Enter your email...' value={email}
+            onChange={e => setEmail(e.target.value)}
+            className='w-full px-4 py-2.5 rounded-lg bg-amber-50/5 border-amber-400/30 focus:border-amber-400 pr-24 placeholder-amber-200/50 transition-all duration-300 focus:ring-amber-400/20  focus:ring-4  focus:outline-none'
+           required />
+           <button type='submit' className='absolute right-1 top-1 bg-gradient-to-br from-amber-300 via-orange-500 to-amber-600 text-white px-4 py-2 rounded-full flex items-center gap-1.5 shadow-lg hover:shadow-amber-400/30 overflow-hidden transition-all duration-500'>
+             <span className='font-bold text-sm tracking-wide transition-transform duration-300 group-hover:-translate-x-1'>
+                 Join Now
+             </span>
+           </button>
+          </div>
+        </form>
+        </div>
+         
+       </div>
+      </div>
+    </footer>
   )
 }
 
