@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BiChevronRight } from 'react-icons/bi';
 import { FaRegEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
@@ -39,10 +40,14 @@ const Footer = () => {
              <span className='font-bold text-sm tracking-wide transition-transform duration-300 group-hover:-translate-x-1'>
                  Join Now
              </span>
+             <BiChevronRight className='text-xl transition-transform duration-300 group-hover:animate-spin flex-shrink-0'/>
+             <span className='absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-amber-50/30 to-transparent group-hover:translate-x-full transition-transform duration-700 '/>
+
            </button>
           </div>
         </form>
         </div>
+         {/* middle column */}
          
        </div>
       </div>
