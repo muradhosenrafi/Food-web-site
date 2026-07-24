@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { FaRegEnvelope } from "react-icons/fa";
+import { socialIcons } from "../assets/dummydata";
 
 const navItems = [
   { name: "Home", link: "/" },
@@ -79,6 +80,31 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+          {/* Right Cloumn */}
+          <div className="flex justify-center md:justify-end">
+            <div className="space-y-4">
+             <h3 className="text-xl font-semibold mb-4 border-l-4 border-amber-400 pl-3 font-merriweather italic text-amber-300">
+                Social Connect
+              </h3>
+              <div className="flex space-x-4">
+                {socialIcons.map(({ icon: Icon, link, color, label }, idx) => (
+                  <a
+                    key={idx}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="text-2xl bg-amber-400/10 p-3 rounded-full hover:bg-amber-400/20 hover:scale-110 transition-all duration-300 relative group"
+                    style={{ color }}>
+                    <Icon className="hover:scale-125 transition-transform"/>
+                    <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-amber-400 text-black px-2 pl-1 rounded text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                     {label}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
