@@ -108,6 +108,17 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        {/* Bottom Section */}
+        <div className="border-t border-r-amber-800 mt-8 text-center">
+          <p className="text-amber-400 text-lg font-playfair">
+            &copy; 2026 Foodie-Frenzy .All Right Reserved.
+          </p>
+           <div className="group inline-block">
+           <a href="https://muradrafi.xo.je/?i=1" target="_blank" className="text-lg font-sacramento bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 bg-clip-text text-transparent hover:text-purple-300 transition-all duration-500">
+           Designed by Rafi 
+           </a>
+           </div>
+        </div>
       </div>
     </footer>
   );
