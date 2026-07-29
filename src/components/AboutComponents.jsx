@@ -47,6 +47,15 @@ export const AboutComponents = () => {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.4 }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a120b] via-transparent to-transparent"/>
+                  </div>
+                  <div className="p-8">
+                     <motion.div className="text-amber-500 mb-4 inline-block " whileHover={{rotate : 15 }}>
+                       <Icon className="w-12 h-12 text-amber-500"/>
+                     </motion.div>
+                     <h3 className=" text-2xl font-bold mb-2 text-amber-100">{f.title}</h3>
+                     <p className="text-amber-100/80">{f.text}</p>
+
                   </div>
                 </div>
               </motion.div>
