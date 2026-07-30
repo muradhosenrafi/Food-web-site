@@ -3,7 +3,7 @@ import { features, stats, teamMembers } from "../assets/dummydata";
 import { useState } from "react";
 
 export const AboutComponents = () => {
-  const [hoverdStar, setHoverdStar] = useState(null);
+  const [hoverdStat, setHoverdStat] = useState(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a120b] via-[#3c2a21] to-[#1a120b] text-amber-50 overflow-hidden relative">
@@ -47,21 +47,87 @@ export const AboutComponents = () => {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.4 }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a120b] via-transparent to-transparent"/>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a120b] via-transparent to-transparent" />
                   </div>
                   <div className="p-8">
-                     <motion.div className="text-amber-500 mb-4 inline-block " whileHover={{rotate : 15 }}>
-                       <Icon className="w-12 h-12 text-amber-500"/>
-                     </motion.div>
-                     <h3 className=" text-2xl font-bold mb-2 text-amber-100">{f.title}</h3>
-                     <p className="text-amber-100/80">{f.text}</p>
-
+                    <motion.div
+                      className="text-amber-500 mb-4 inline-block "
+                      whileHover={{ rotate: 15 }}
+                    >
+                      <Icon className="w-12 h-12 text-amber-500" />
+                    </motion.div>
+                    <h3 className=" text-2xl font-bold mb-2 text-amber-100">
+                      {f.title}
+                    </h3>
+                    <p className="text-amber-100/80">{f.text}</p>
                   </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
+        <section className="py-16 px-4 md:px-8 bg-gradient-to-br from-[#1a120b] to-[#3c2a21]/90 ">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.2, type: "spring" }}
+                  className="relative group h-48"
+                  hoverdStat={() => hoverdStat(i)}
+                  onHoverEnd={() => hoverdStat(null)}
+                  animate={{
+                    scale: hoverdStat === i ? 1.5 : 1,
+                    zIndex: hoverdStat === i ? 10 : 1,
+                  }}
+                >
+                  <motion.div
+                    className="absolute inset-0 "
+                    animate={{
+                      y: [0, -15, 0],
+                      transition: {
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.3,
+                      },
+                    }}
+                  >
+                    <div className="relative h-full bg-[#3c2a21]/40 backdrop-blur-lg rounded-xl border-2 border-amber-600/30 p-6 overflow-hidden transition-all duration-300 ">
+                      <motion.div
+                        className="absolute inset-0 rounded-xl "
+                        animate={{
+                          background: [
+                            "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
+                            "linear-gradient(45deg, #3c2a21 0%, #1a120b 80%, #3c2a21 100%)",
+                            "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
+                          ],
+                        }}
+                        transition={{ duration: 6, repeat: Infinity }}
+                      />
+
+                      <div className="absolute inset-0 rounded-xl shadow-lg shadow-amber-900/20" />
+                      <div className="relative z-10 h-full flex flex-col items-center justify-center">
+                        <motion.div
+                          className="mb-4 p-3 rounded-full bg-amber-900/30 border border-amber-700/30"
+                          whileHover={{ scale: 1.1, rotate: 10 }}
+                        >
+                          <Icon className="h-8 w-8 text-amber-500/90" />
+                        </motion.div>
+                        <div className="">
+
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </section>
       </section>
     </div>
   );
