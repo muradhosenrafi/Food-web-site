@@ -117,9 +117,14 @@ export const AboutComponents = () => {
                         >
                           <Icon className="h-8 w-8 text-amber-500/90" />
                         </motion.div>
-                        <div className="">
-
+                        <div className="text-4xl font-bold mb-1 bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 text-transparent">
+                              {s.number}
                         </div>
+                        <motion.div className="text-sm uppercase tracking-widest font-medium text-amber-100/80" animate={{letterSpacing: hoverdStat === i ? '0.15em' : '0.1em', textShadow: hoverdStat=== i ? '0 0 8px rgba(245, 158, 11, 0.4)': 'none' }}>
+                         {
+                          s.label
+                         }
+                        </motion.div>
                       </div>
                     </div>
                   </motion.div>
