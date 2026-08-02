@@ -118,16 +118,26 @@ export const AboutComponents = () => {
                           <Icon className="h-8 w-8 text-amber-500/90" />
                         </motion.div>
                         <div className="text-4xl font-bold mb-1 bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 text-transparent">
-                              {s.number}
+                          {s.number}
                         </div>
-                        <motion.div className="text-sm uppercase tracking-widest font-medium text-amber-100/80" animate={{letterSpacing: hoverdStat === i ? '0.15em' : '0.1em', textShadow: hoverdStat=== i ? '0 0 8px rgba(245, 158, 11, 0.4)': 'none' }}>
-                         {
-                          s.label
-                         }
+                        <motion.div
+                          className="text-sm uppercase tracking-widest font-medium text-amber-100/80"
+                          animate={{
+                            letterSpacing:
+                              hoverdStat === i ? "0.15em" : "0.1em",
+                            textShadow:
+                              hoverdStat === i
+                                ? "0 0 8px rgba(245, 158, 11, 0.4)"
+                                : "none",
+                          }}
+                        >
+                          {s.label}
                         </motion.div>
                       </div>
+                      <motion.div className="absolute inset-0 bg-amber-900/10 rounded-xl" initial={{opacity:0}} animate={{opacity : hoverdStat === i ? 1 : 0 }}/>
                     </div>
-                  </motion.div>
+                      </motion.div>
+                        <motion.div className="absolute inset-x-4 bottom-0 h-8 bg-amber-900/30 blur-xl rounded" animate={{opacity: hoverdStat === i ? 0.4 : 0.2, scale:  hoverdStat === i ? 0.9 : 0.8 }}/>
                 </motion.div>
               );
             })}
