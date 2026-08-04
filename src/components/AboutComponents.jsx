@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import { features, stats, teamMembers } from "../assets/dummydata";
 import { useState } from "react";
 
@@ -66,84 +66,135 @@ export const AboutComponents = () => {
             );
           })}
         </div>
-        <section className="py-16 px-4 md:px-8 bg-gradient-to-br from-[#1a120b] to-[#3c2a21]/90 ">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((s, i) => {
-              const Icon = s.icon;
-              return (
+      </section>
+      <section className="py-16 px-4 md:px-8 bg-gradient-to-br from-[#1a120b] to-[#3c2a21]/90 ">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2, type: "spring" }}
+                className="relative group h-48"
+                hoverdStat={() => hoverdStat(i)}
+                onHoverEnd={() => hoverdStat(null)}
+                animate={{
+                  scale: hoverdStat === i ? 1.5 : 1,
+                  zIndex: hoverdStat === i ? 10 : 1,
+                }}
+              >
                 <motion.div
-                  key={s.label}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.2, type: "spring" }}
-                  className="relative group h-48"
-                  hoverdStat={() => hoverdStat(i)}
-                  onHoverEnd={() => hoverdStat(null)}
+                  className="absolute inset-0 "
                   animate={{
-                    scale: hoverdStat === i ? 1.5 : 1,
-                    zIndex: hoverdStat === i ? 10 : 1,
+                    y: [0, -15, 0],
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: i * 0.3,
+                    },
                   }}
                 >
-                  <motion.div
-                    className="absolute inset-0 "
-                    animate={{
-                      y: [0, -15, 0],
-                      transition: {
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: i * 0.3,
-                      },
-                    }}
-                  >
-                    <div className="relative h-full bg-[#3c2a21]/40 backdrop-blur-lg rounded-xl border-2 border-amber-600/30 p-6 overflow-hidden transition-all duration-300 ">
-                      <motion.div
-                        className="absolute inset-0 rounded-xl "
-                        animate={{
-                          background: [
-                            "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
-                            "linear-gradient(45deg, #3c2a21 0%, #1a120b 80%, #3c2a21 100%)",
-                            "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
-                          ],
-                        }}
-                        transition={{ duration: 6, repeat: Infinity }}
-                      />
+                  <div className="relative h-full bg-[#3c2a21]/40 backdrop-blur-lg rounded-xl border-2 border-amber-600/30 p-6 overflow-hidden transition-all duration-300 ">
+                    <motion.div
+                      className="absolute inset-0 rounded-xl "
+                      animate={{
+                        background: [
+                          "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
+                          "linear-gradient(45deg, #3c2a21 0%, #1a120b 80%, #3c2a21 100%)",
+                          "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
+                        ],
+                      }}
+                      transition={{ duration: 6, repeat: Infinity }}
+                    />
 
-                      <div className="absolute inset-0 rounded-xl shadow-lg shadow-amber-900/20" />
-                      <div className="relative z-10 h-full flex flex-col items-center justify-center">
-                        <motion.div
-                          className="mb-4 p-3 rounded-full bg-amber-900/30 border border-amber-700/30"
-                          whileHover={{ scale: 1.1, rotate: 10 }}
-                        >
-                          <Icon className="h-8 w-8 text-amber-500/90" />
-                        </motion.div>
-                        <div className="text-4xl font-bold mb-1 bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 text-transparent">
-                          {s.number}
-                        </div>
-                        <motion.div
-                          className="text-sm uppercase tracking-widest font-medium text-amber-100/80"
-                          animate={{
-                            letterSpacing:
-                              hoverdStat === i ? "0.15em" : "0.1em",
-                            textShadow:
-                              hoverdStat === i
-                                ? "0 0 8px rgba(245, 158, 11, 0.4)"
-                                : "none",
-                          }}
-                        >
-                          {s.label}
-                        </motion.div>
-                      </div>
-                      <motion.div className="absolute inset-0 bg-amber-900/10 rounded-xl" initial={{opacity:0}} animate={{opacity : hoverdStat === i ? 1 : 0 }}/>
-                    </div>
+                    <div className="absolute inset-0 rounded-xl shadow-lg shadow-amber-900/20" />
+                    <div className="relative z-10 h-full flex flex-col items-center justify-center">
+                      <motion.div
+                        className="mb-4 p-3 rounded-full bg-amber-900/30 border border-amber-700/30"
+                        whileHover={{ scale: 1.1, rotate: 10 }}
+                      >
+                        <Icon className="h-8 w-8 text-amber-500/90" />
                       </motion.div>
-                        <motion.div className="absolute inset-x-4 bottom-0 h-8 bg-amber-900/30 blur-xl rounded" animate={{opacity: hoverdStat === i ? 0.4 : 0.2, scale:  hoverdStat === i ? 0.9 : 0.8 }}/>
+                      <div className="text-4xl font-bold mb-1 bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 text-transparent">
+                        {s.number}
+                      </div>
+                      <motion.div
+                        className="text-sm uppercase tracking-widest font-medium text-amber-100/80"
+                        animate={{
+                          letterSpacing: hoverdStat === i ? "0.15em" : "0.1em",
+                          textShadow:
+                            hoverdStat === i
+                              ? "0 0 8px rgba(245, 158, 11, 0.4)"
+                              : "none",
+                        }}
+                      >
+                        {s.label}
+                      </motion.div>
+                    </div>
+                    <motion.div
+                      className="absolute inset-0 bg-amber-900/10 rounded-xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: hoverdStat === i ? 1 : 0 }}
+                    />
+                  </div>
                 </motion.div>
-              );
-            })}
-          </div>
-        </section>
+                <motion.div
+                  className="absolute inset-x-4 bottom-0 h-8 bg-amber-900/30 blur-xl rounded"
+                  animate={{
+                    opacity: hoverdStat === i ? 0.4 : 0.2,
+                    scale: hoverdStat === i ? 0.9 : 0.8,
+                  }}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="py-16 px-4 md:px-8 bg-gradient-to-br from-[#1a120b] to-[#3c2a21]/90">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          {stats.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2, type: "spring" }}
+                className="relative group h-48 "
+                onHoverStart={() => setHoverdStat(i)}
+                onHoverEnd={() => setHoverdStat(null)}
+                animate={{
+                  scale: hoverdStat === i ? 1.05 : 1,
+                  zIndex: hoverdStat === i ? 10 : 1,
+                }}
+              >
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{
+                    y: [0, -15, 0],
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: i * 0.3,
+                    },
+                  }}
+                >
+                  <div className="relative h-full bg-[#3c2a21]/40 backdrop-blur-lg rounded-xl border-2 border-amber-600/30 p-6 overflow-hidden transition-all duration-300 ">
+                   
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
 };
+
+export default AboutComponents;
