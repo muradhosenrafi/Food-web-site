@@ -1,16 +1,157 @@
-# React + Vite
+# 🍔 Food Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern and fully responsive food ordering website built with React, Tailwind CSS, and Firebase Authentication. This project provides a clean UI, secure authentication, and an excellent user experience across all devices.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+👉 https://food-web-site-pi.vercel.app/
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📸 Preview
 
-## Expanding the Oxlint configuration
+> Add your project screenshot here
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+/public/preview.png
+```
+
+---
+
+## 🚀 Features
+
+- 🔐 Firebase Authentication
+- 👤 User Login & Registration
+- 🔑 Forgot Password
+- 📧 Email Verification
+- 📱 Fully Responsive Design
+- 🎨 Modern UI with Tailwind CSS
+- ⚡ Fast Performance using Vite
+- 🍕 Food Menu Section
+- 🛒 Add to Cart
+- ❤️ Beautiful Animations
+- 🔍 Clean Navigation
+
+---
+
+## 🛠️ Built With
+
+- React.js
+- Vite
+- Tailwind CSS
+- Firebase
+- React Router DOM
+- React Icons
+- JavaScript (ES6)
+
+---
+
+## 📂 Folder Structure
+
+```
+src/
+│
+├── assets/
+├── components/
+├── pages/
+├── firebase/
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/yourusername/food-website.git
+```
+
+Go to project folder
+
+```bash
+cd food-website
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run development server
+
+```bash
+npm run dev
+```
+
+Build project
+
+```bash
+npm run build
+```
+
+Preview build
+
+```bash
+npm run preview
+```
+
+---
+
+## 🔥 Environment Variables
+
+Create a `.env` file and add your Firebase credentials.
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+---
+
+## 📱 Responsive
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+---
+
+## 📈 Future Improvements
+
+- Payment Gateway
+- Wishlist
+- Order History
+- Admin Dashboard
+- Product Search
+- Product Filtering
+- Dark Mode
+
+---
+
+## 👨‍💻 Author
+
+**Murad Hosen Rafi**
+
+Frontend Developer
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## ⭐ Support
+
+If you like this project, please give it a ⭐ on GitHub.
