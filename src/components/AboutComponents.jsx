@@ -185,7 +185,20 @@ export const AboutComponents = () => {
                   }}
                 >
                   <div className="relative h-full bg-[#3c2a21]/40 backdrop-blur-lg rounded-xl border-2 border-amber-600/30 p-6 overflow-hidden transition-all duration-300 ">
-                   
+                    <motion.div
+                      className="absolute inset-0 rounded-xl"
+                      animate={{
+                        background: [
+                          "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
+                          "linear-gradient(45deg, #3c2a21 0%, #1a120b 80%, #3c2a21 100%)",
+                          "linear-gradient(45deg, #3c2a21 0%, #1a120b 50%, #3c2a21 100%)",
+                        ],
+                      }}
+                      transition={{ duration: 6, repeat: Infinity }}
+                    />
+
+                    <div className=""/>
+
                   </div>
                 </motion.div>
               </motion.div>
