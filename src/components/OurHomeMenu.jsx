@@ -24,7 +24,7 @@ const OurHomeMenu = () => {
     <div className="bg-gradient-to-br from-[#1a120b] via-[#2a1e14] to-[#2a1e14] to-[#3e2b1d] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r  from-amber-200 via-amber-300 to-amber-200">
-          <span className="font-dancingscript block text-5xl  md:text-7xl sm:text-6xl mb-2">
+          <span className="font-cursive block text-5xl  md:text-7xl sm:text-6xl mb-2">
             Our Exquisite Menu
           </span>
           <span className="text-xl block sm:text-2xl md:text-3xl font-cinzel mt-4 text-amber-100/80">
