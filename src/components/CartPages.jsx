@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
-import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
+import { FaMinus, FaPlus, FaTimes, FaTrash } from "react-icons/fa";
 
 const CartPages = () => {
   const { cartItems, removeFromCart, updateQuantity, cartTotal } = useCart();
@@ -115,8 +115,16 @@ const CartPages = () => {
         )}
       </div>
       {selectedImage && (
-        <div>
-          
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-amber-900/40 bg-opacity-75 backdrop-blur-sm p-4 overflow-auto" onClick={() => setSelectedImage(null)} >
+          <div className="relative max-w-full max-h-full ">
+            <img src={selectedImage} alt="Full View" className="max-w-[90vw] max-h-[90vh] rounded-lg object-contain"/>
+            <button onClick={() => setSelectedImage(null)}
+              className="absolute top-1 right-1 bg-amber-900/80 rounded-full p-2 text-black hover:bg-amber-800/90 transition-all duration-200 active:scale-90"
+              >
+              <FaTimes className="w-6 h-6 "/>
+
+            </button>
+          </div>
         </div>
       ) }
     </div>
