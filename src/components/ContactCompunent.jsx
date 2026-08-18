@@ -84,7 +84,13 @@ const ContactCompunent = () => {
             </div>
           </div>
           {/* CONTACT FROM */}
-          
+
+                  <div
+              className="relative bg-white/5 backdrop-blur-lg rounded-2xl p-6 shadow-2xl transform transition-all duration-300
+            hover:scale-[1.02] animate-card-float border-1-4 border-amber-500 hover:border-amber-400 group"
+            >
+
+          </div>
         </div>
       </div>
     </div>
